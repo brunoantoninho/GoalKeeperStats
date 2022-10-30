@@ -9,13 +9,25 @@
 /* Begin PBXBuildFile section */
 		2905D456290F0B6E00A6B7F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D455290F0B6E00A6B7F2 /* AppDelegate.swift */; };
 		2905D458290F0B6E00A6B7F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D457290F0B6E00A6B7F2 /* SceneDelegate.swift */; };
-		2905D45A290F0B6E00A6B7F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D459290F0B6E00A6B7F2 /* ViewController.swift */; };
 		2905D45D290F0B6E00A6B7F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2905D45B290F0B6E00A6B7F2 /* Main.storyboard */; };
 		2905D45F290F0B6F00A6B7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2905D45E290F0B6F00A6B7F2 /* Assets.xcassets */; };
 		2905D462290F0B6F00A6B7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2905D460290F0B6F00A6B7F2 /* LaunchScreen.storyboard */; };
 		2905D46D290F0B6F00A6B7F2 /* GoalKeeperStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D46C290F0B6F00A6B7F2 /* GoalKeeperStatsTests.swift */; };
 		2905D477290F0B6F00A6B7F2 /* GoalKeeperStatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D476290F0B6F00A6B7F2 /* GoalKeeperStatsUITests.swift */; };
 		2905D479290F0B6F00A6B7F2 /* GoalKeeperStatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D478290F0B6F00A6B7F2 /* GoalKeeperStatsUITestsLaunchTests.swift */; };
+		2905D494290F0BD100A6B7F2 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D488290F0BD100A6B7F2 /* GameTableViewCell.swift */; };
+		2905D495290F0BD100A6B7F2 /* GameManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D48A290F0BD100A6B7F2 /* GameManagerViewModel.swift */; };
+		2905D496290F0BD100A6B7F2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D48C290F0BD100A6B7F2 /* GameViewController.swift */; };
+		2905D497290F0BD100A6B7F2 /* GamesManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */; };
+		2905D498290F0BD100A6B7F2 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D48F290F0BD100A6B7F2 /* RealmManager.swift */; };
+		2905D499290F0BD100A6B7F2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D492290F0BD100A6B7F2 /* Game.swift */; };
+		2905D49A290F0BD100A6B7F2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D493290F0BD100A6B7F2 /* Player.swift */; };
+		2905D49E290F0C0A00A6B7F2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D49B290F0C0A00A6B7F2 /* Coordinator.swift */; };
+		2905D49F290F0C0A00A6B7F2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D49C290F0C0A00A6B7F2 /* MainCoordinator.swift */; };
+		2905D4A0290F0C0A00A6B7F2 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2905D49D290F0C0A00A6B7F2 /* Storyboarded.swift */; };
+		2905D4A4290F0C5500A6B7F2 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 2905D4A3290F0C5500A6B7F2 /* SwiftyBeaver */; };
+		2905D4A7290F0C9D00A6B7F2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2905D4A6290F0C9D00A6B7F2 /* RealmSwift */; };
+		2905D4AA290F0CC900A6B7F2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2905D4A9290F0CC900A6B7F2 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +51,6 @@
 		2905D452290F0B6E00A6B7F2 /* GoalKeeperStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalKeeperStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2905D455290F0B6E00A6B7F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2905D457290F0B6E00A6B7F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2905D459290F0B6E00A6B7F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2905D45C290F0B6E00A6B7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2905D45E290F0B6F00A6B7F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2905D461290F0B6F00A6B7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +60,16 @@
 		2905D472290F0B6F00A6B7F2 /* GoalKeeperStatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalKeeperStatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2905D476290F0B6F00A6B7F2 /* GoalKeeperStatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalKeeperStatsUITests.swift; sourceTree = "<group>"; };
 		2905D478290F0B6F00A6B7F2 /* GoalKeeperStatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalKeeperStatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2905D488290F0BD100A6B7F2 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		2905D48A290F0BD100A6B7F2 /* GameManagerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManagerViewModel.swift; sourceTree = "<group>"; };
+		2905D48C290F0BD100A6B7F2 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesManagerViewController.swift; sourceTree = "<group>"; };
+		2905D48F290F0BD100A6B7F2 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		2905D492290F0BD100A6B7F2 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		2905D493290F0BD100A6B7F2 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2905D49B290F0C0A00A6B7F2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2905D49C290F0C0A00A6B7F2 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		2905D49D290F0C0A00A6B7F2 /* Storyboarded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +77,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2905D4A7290F0C9D00A6B7F2 /* RealmSwift in Frameworks */,
+				2905D4A4290F0C5500A6B7F2 /* SwiftyBeaver in Frameworks */,
+				2905D4AA290F0CC900A6B7F2 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +125,10 @@
 			children = (
 				2905D455290F0B6E00A6B7F2 /* AppDelegate.swift */,
 				2905D457290F0B6E00A6B7F2 /* SceneDelegate.swift */,
-				2905D459290F0B6E00A6B7F2 /* ViewController.swift */,
+				2905D4A1290F0C1800A6B7F2 /* Coordinator */,
+				2905D490290F0BD100A6B7F2 /* Models */,
+				2905D48E290F0BD100A6B7F2 /* Services */,
+				2905D486290F0BD100A6B7F2 /* UI */,
 				2905D45B290F0B6E00A6B7F2 /* Main.storyboard */,
 				2905D45E290F0B6F00A6B7F2 /* Assets.xcassets */,
 				2905D460290F0B6F00A6B7F2 /* LaunchScreen.storyboard */,
@@ -127,6 +154,76 @@
 			path = GoalKeeperStatsUITests;
 			sourceTree = "<group>";
 		};
+		2905D486290F0BD100A6B7F2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2905D487290F0BD100A6B7F2 /* UITableviewCells */,
+				2905D489290F0BD100A6B7F2 /* ViewModels */,
+				2905D48B290F0BD100A6B7F2 /* ViewControllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2905D487290F0BD100A6B7F2 /* UITableviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2905D488290F0BD100A6B7F2 /* GameTableViewCell.swift */,
+			);
+			path = UITableviewCells;
+			sourceTree = "<group>";
+		};
+		2905D489290F0BD100A6B7F2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2905D48A290F0BD100A6B7F2 /* GameManagerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2905D48B290F0BD100A6B7F2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2905D48C290F0BD100A6B7F2 /* GameViewController.swift */,
+				2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2905D48E290F0BD100A6B7F2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2905D48F290F0BD100A6B7F2 /* RealmManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2905D490290F0BD100A6B7F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2905D491290F0BD100A6B7F2 /* DAO */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2905D491290F0BD100A6B7F2 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				2905D492290F0BD100A6B7F2 /* Game.swift */,
+				2905D493290F0BD100A6B7F2 /* Player.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		2905D4A1290F0C1800A6B7F2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2905D49B290F0C0A00A6B7F2 /* Coordinator.swift */,
+				2905D49C290F0C0A00A6B7F2 /* MainCoordinator.swift */,
+				2905D49D290F0C0A00A6B7F2 /* Storyboarded.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +240,11 @@
 			dependencies = (
 			);
 			name = GoalKeeperStats;
+			packageProductDependencies = (
+				2905D4A3290F0C5500A6B7F2 /* SwiftyBeaver */,
+				2905D4A6290F0C9D00A6B7F2 /* RealmSwift */,
+				2905D4A9290F0CC900A6B7F2 /* IQKeyboardManagerSwift */,
+			);
 			productName = GoalKeeperStats;
 			productReference = 2905D452290F0B6E00A6B7F2 /* GoalKeeperStats.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +317,11 @@
 				Base,
 			);
 			mainGroup = 2905D449290F0B6E00A6B7F2;
+			packageReferences = (
+				2905D4A2290F0C5500A6B7F2 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				2905D4A5290F0C9D00A6B7F2 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				2905D4A8290F0CC900A6B7F2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 2905D453290F0B6E00A6B7F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,9 +365,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2905D45A290F0B6E00A6B7F2 /* ViewController.swift in Sources */,
+				2905D49F290F0C0A00A6B7F2 /* MainCoordinator.swift in Sources */,
+				2905D499290F0BD100A6B7F2 /* Game.swift in Sources */,
+				2905D498290F0BD100A6B7F2 /* RealmManager.swift in Sources */,
 				2905D456290F0B6E00A6B7F2 /* AppDelegate.swift in Sources */,
+				2905D4A0290F0C0A00A6B7F2 /* Storyboarded.swift in Sources */,
 				2905D458290F0B6E00A6B7F2 /* SceneDelegate.swift in Sources */,
+				2905D497290F0BD100A6B7F2 /* GamesManagerViewController.swift in Sources */,
+				2905D49E290F0C0A00A6B7F2 /* Coordinator.swift in Sources */,
+				2905D494290F0BD100A6B7F2 /* GameTableViewCell.swift in Sources */,
+				2905D496290F0BD100A6B7F2 /* GameViewController.swift in Sources */,
+				2905D49A290F0BD100A6B7F2 /* Player.swift in Sources */,
+				2905D495290F0BD100A6B7F2 /* GameManagerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +718,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2905D4A2290F0C5500A6B7F2 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		2905D4A5290F0C9D00A6B7F2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		2905D4A8290F0CC900A6B7F2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2905D4A3290F0C5500A6B7F2 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2905D4A2290F0C5500A6B7F2 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+		2905D4A6290F0C9D00A6B7F2 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2905D4A5290F0C9D00A6B7F2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		2905D4A9290F0CC900A6B7F2 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2905D4A8290F0CC900A6B7F2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2905D44A290F0B6E00A6B7F2 /* Project object */;
 }
