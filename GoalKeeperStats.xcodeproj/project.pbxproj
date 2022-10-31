@@ -28,6 +28,10 @@
 		2905D4A4290F0C5500A6B7F2 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 2905D4A3290F0C5500A6B7F2 /* SwiftyBeaver */; };
 		2905D4A7290F0C9D00A6B7F2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2905D4A6290F0C9D00A6B7F2 /* RealmSwift */; };
 		2905D4AA290F0CC900A6B7F2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2905D4A9290F0CC900A6B7F2 /* IQKeyboardManagerSwift */; };
+		290EA835290F1FEC00F3A3B1 /* GameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA834290F1FEC00F3A3B1 /* GameTypeViewController.swift */; };
+		290EA837290F2D2B00F3A3B1 /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */; };
+		290EA839290F3BF000F3A3B1 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA838290F3BF000F3A3B1 /* GameViewModel.swift */; };
+		290EA83D290F50B500F3A3B1 /* GameSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 		2905D49B290F0C0A00A6B7F2 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2905D49C290F0C0A00A6B7F2 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		2905D49D290F0C0A00A6B7F2 /* Storyboarded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		290EA834290F1FEC00F3A3B1 /* GameTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTypeViewController.swift; sourceTree = "<group>"; };
+		290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
+		290EA838290F3BF000F3A3B1 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				2905D48A290F0BD100A6B7F2 /* GameManagerViewModel.swift */,
+				290EA838290F3BF000F3A3B1 /* GameViewModel.swift */,
+				290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +195,8 @@
 			children = (
 				2905D48C290F0BD100A6B7F2 /* GameViewController.swift */,
 				2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */,
+				290EA834290F1FEC00F3A3B1 /* GameTypeViewController.swift */,
+				290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -368,12 +380,16 @@
 				2905D49F290F0C0A00A6B7F2 /* MainCoordinator.swift in Sources */,
 				2905D499290F0BD100A6B7F2 /* Game.swift in Sources */,
 				2905D498290F0BD100A6B7F2 /* RealmManager.swift in Sources */,
+				290EA839290F3BF000F3A3B1 /* GameViewModel.swift in Sources */,
 				2905D456290F0B6E00A6B7F2 /* AppDelegate.swift in Sources */,
 				2905D4A0290F0C0A00A6B7F2 /* Storyboarded.swift in Sources */,
 				2905D458290F0B6E00A6B7F2 /* SceneDelegate.swift in Sources */,
+				290EA837290F2D2B00F3A3B1 /* GameSetupViewController.swift in Sources */,
 				2905D497290F0BD100A6B7F2 /* GamesManagerViewController.swift in Sources */,
 				2905D49E290F0C0A00A6B7F2 /* Coordinator.swift in Sources */,
+				290EA83D290F50B500F3A3B1 /* GameSetupViewModel.swift in Sources */,
 				2905D494290F0BD100A6B7F2 /* GameTableViewCell.swift in Sources */,
+				290EA835290F1FEC00F3A3B1 /* GameTypeViewController.swift in Sources */,
 				2905D496290F0BD100A6B7F2 /* GameViewController.swift in Sources */,
 				2905D49A290F0BD100A6B7F2 /* Player.swift in Sources */,
 				2905D495290F0BD100A6B7F2 /* GameManagerViewModel.swift in Sources */,

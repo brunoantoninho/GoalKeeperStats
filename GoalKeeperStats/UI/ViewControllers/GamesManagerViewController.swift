@@ -9,8 +9,8 @@ import UIKit
 
 class GamesManagerViewController: UIViewController, Storyboarded {
     
-    @IBOutlet weak var addGameButton: UIButton!
-    @IBOutlet weak var tableGames: UITableView!
+    @IBOutlet private weak var addGameButton: UIButton!
+    @IBOutlet private weak var tableGames: UITableView!
     
     private var viewModel = GameManagerViewModel()
     weak var coordinator: MainCoordinator?
@@ -24,14 +24,19 @@ class GamesManagerViewController: UIViewController, Storyboarded {
         viewModel.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     private func setupButtons() {
         addGameButton.addTarget(self, action: #selector(addGameButtonAction), for: .touchUpInside)
     }
     
     @objc
     private func addGameButtonAction() {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") {
-            
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GameTypeViewController") {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

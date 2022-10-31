@@ -9,67 +9,59 @@ import UIKit
 import MessageUI
 
 class GameViewController: UIViewController {
-
-    @IBOutlet weak var defendedButton: UIButton!
-    @IBOutlet weak var defendedLabel: UILabel!
-    @IBOutlet weak var defendedLabelScore: UILabel!
-    @IBOutlet weak var undoDefendedButton: UIButton!
-    @IBOutlet weak var sufferdButton: UIButton!
-    @IBOutlet weak var sufferedLabel: UILabel!
-    @IBOutlet weak var sufferdLabelScore: UILabel!
-    @IBOutlet weak var undoSufferdButton: UIButton!
-    @IBOutlet weak var homeTeamLabel: UILabel!
-    @IBOutlet weak var visitingTeamLabel: UILabel!
-    @IBOutlet weak var homeTeamScoreLabel: UILabel!
-    @IBOutlet weak var visitingTeamScoreLabel: UILabel!
-    @IBOutlet weak var homeTeamGoalButton: UIButton!
-    @IBOutlet weak var homeTeamUndoGoalButton: UIButton!
-    @IBOutlet weak var sendEmailButton: UIButton!
-    @IBOutlet weak var gameOverButton: UIButton!
+    
+    @IBOutlet private weak var defendedButton: UIButton!
+    @IBOutlet private weak var defendedLabel: UILabel!
+    @IBOutlet private weak var defendedLabelScore: UILabel!
+    @IBOutlet private weak var undoDefendedButton: UIButton!
+    @IBOutlet private weak var sufferdButton: UIButton!
+    @IBOutlet private weak var sufferedLabel: UILabel!
+    @IBOutlet private weak var sufferdLabelScore: UILabel!
+    @IBOutlet private weak var undoSufferdButton: UIButton!
+    @IBOutlet private weak var homeTeamLabel: UILabel!
+    @IBOutlet private weak var visitingTeamLabel: UILabel!
+    @IBOutlet private weak var homeTeamScoreLabel: UILabel!
+    @IBOutlet private weak var visitingTeamScoreLabel: UILabel!
+    @IBOutlet private weak var homeTeamGoalButton: UIButton!
+    @IBOutlet private weak var homeTeamUndoGoalButton: UIButton!
+    @IBOutlet private weak var sendEmailButton: UIButton!
+    @IBOutlet private weak var gameOverButton: UIButton!
+    
+    private var viewModel: GameViewModel!
+    var gameId: Int!
+    
     private var defendedScore = 0 {
         didSet {
             defendedLabelScore.text = "\(defendedScore)"
+            viewModel.saveDefendedScore(defendedScore: defendedScore)
         }
     }
     private var visitingTeamScore = 0 {
         didSet {
             sufferdLabelScore.text = "\(visitingTeamScore)"
             visitingTeamScoreLabel.text = "\(visitingTeamScore)"
-            
+            viewModel.saveVisitingTeamScore(visitingTeamScore: visitingTeamScore)
         }
     }
     
     private var homeTeamScore = 0 {
         didSet {
             homeTeamScoreLabel.text = "\(homeTeamScore)"
-        }
-    }
-    
-    private var homeTeamName = "" {
-        didSet {
-            homeTeamLabel.text = homeTeamName
-        }
-    }
-    
-    private var visitingTeamName = "" {
-        didSet {
-            visitingTeamLabel.text = visitingTeamName
+            viewModel.saveHomeTeamScore(homeTeamScore: homeTeamScore)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewModel = GameViewModel(gameId: gameId)
+        viewModel.delegate = self
         setupButtons()
-        setupLabels()
         setupUI()
-
-        UIApplication.shared.isIdleTimerDisabled = true
     }
     
-    private func setupLabels() {
-        homeTeamName = "AAC"
-        visitingTeamName = "Albergaria"
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     private func setupButtons() {
@@ -84,7 +76,12 @@ class GameViewController: UIViewController {
     }
     
     private func setupUI() {
+        UIApplication.shared.isIdleTimerDisabled = true
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        if let game = viewModel.game {
+            populateUI(game: game)
+        }
     }
     
     // MARK: Button Action
@@ -136,11 +133,11 @@ class GameViewController: UIViewController {
             let emailBody =
 """
             Resultado final:
-            \(homeTeamName) X \(visitingTeamName)
-            \(homeTeamScore) - \(visitingTeamScore)
+            \(viewModel.game.homeTeamName) X \(viewModel.game.visitingTeamName)
+            \(viewModel.game.homeTeamScore) - \(viewModel.game.visitingTeamScore)
             
-            Número de defesas: \(defendedScore)
-            Golos sofridos: \(visitingTeamScore)
+            Número de defesas: \(viewModel.game.defendedScore)
+            Golos sofridos: \(viewModel.game.visitingTeamScore)
 """
             mail.setMessageBody(emailBody, isHTML: false)
             present(mail, animated: true)
@@ -151,8 +148,7 @@ class GameViewController: UIViewController {
     
     @objc
     func gameOverButtonAction() {
-        saveGame()
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     // MARK: Helpers
@@ -162,8 +158,6 @@ class GameViewController: UIViewController {
         currentGame.id = Int(Date().timeIntervalSince1970 * 1000)
         currentGame.defendedScore = defendedScore
         currentGame.homeTeamScore = homeTeamScore
-        currentGame.homeTeamName = homeTeamName
-        currentGame.visitingTeamName = visitingTeamName
         currentGame.visitingTeamScore = visitingTeamScore
         RealmManager.shared().save(currentGame)
     }
@@ -173,5 +167,15 @@ class GameViewController: UIViewController {
 extension GameViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+    }
+}
+
+extension GameViewController: GameViewModelDelegate {
+    func populateUI(game: Game) {
+        homeTeamLabel.text = game.homeTeamName
+        homeTeamScoreLabel.text = String(game.homeTeamScore)
+        visitingTeamLabel.text = game.visitingTeamName
+        visitingTeamScoreLabel.text = String(game.visitingTeamScore)
+        defendedLabelScore .text = String(game.defendedScore)
     }
 }
