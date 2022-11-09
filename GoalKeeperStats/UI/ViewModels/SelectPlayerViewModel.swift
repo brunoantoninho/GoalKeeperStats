@@ -1,25 +1,21 @@
 //
-//  GameManagerViewModel.swift
-//  GoolKeeperTracker
+//  SelectPlayerViewModel.swift
+//  GoalKeeperStats
 //
-//  Created by Bruno Antoninho on 30/10/2022.
+//  Created by Bruno Antoninho on 08/11/2022.
 //
 
 import RealmSwift
 
-class GameManagerViewModel {
+class SelectPlayerViewModel {
     
-    var gamesList: Results<Game>?
-    private var notificationToken: NotificationToken?
+    private var notificationToken: NotificationToken!
+    var playersList: Results<Player>?
     weak var delegate: TableNotificationProtocol?
     
     init() {
-        observeGamesListBD()
-    }
-    
-    private func observeGamesListBD() {
-        gamesList = RealmManager.shared().objects(type: Game.self)
-        notificationToken = gamesList?.observe({ [weak self] change in
+        playersList = RealmManager.shared().objects(type: Player.self)
+        notificationToken = playersList?.observe({ [weak self] change in
             switch change {
                 
             case .initial(_):
@@ -43,6 +39,6 @@ class GameManagerViewModel {
     }
     
     deinit {
-        notificationToken?.invalidate()
+        notificationToken.invalidate()
     }
 }

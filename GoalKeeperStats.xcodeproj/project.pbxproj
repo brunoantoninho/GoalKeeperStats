@@ -32,6 +32,11 @@
 		290EA837290F2D2B00F3A3B1 /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */; };
 		290EA839290F3BF000F3A3B1 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA838290F3BF000F3A3B1 /* GameViewModel.swift */; };
 		290EA83D290F50B500F3A3B1 /* GameSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */; };
+		295D92532919C8E700BEB2EA /* SelectPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */; };
+		295D92552919CED500BEB2EA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D92542919CED500BEB2EA /* PlayerViewController.swift */; };
+		295D92572919D46100BEB2EA /* CreatePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */; };
+		2994C2D2291B1813001D0CFE /* SelectPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994C2D1291B1813001D0CFE /* SelectPlayerViewModel.swift */; };
+		2994C2D4291B199B001D0CFE /* TableNotificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994C2D3291B199B001D0CFE /* TableNotificationProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,11 @@
 		290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
 		290EA838290F3BF000F3A3B1 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewModel.swift; sourceTree = "<group>"; };
+		295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerViewController.swift; sourceTree = "<group>"; };
+		295D92542919CED500BEB2EA /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerViewController.swift; sourceTree = "<group>"; };
+		2994C2D1291B1813001D0CFE /* SelectPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerViewModel.swift; sourceTree = "<group>"; };
+		2994C2D3291B199B001D0CFE /* TableNotificationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableNotificationProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +145,7 @@
 				2905D457290F0B6E00A6B7F2 /* SceneDelegate.swift */,
 				2905D4A1290F0C1800A6B7F2 /* Coordinator */,
 				2905D490290F0BD100A6B7F2 /* Models */,
+				2994C2D5291B19A6001D0CFE /* Protocols */,
 				2905D48E290F0BD100A6B7F2 /* Services */,
 				2905D486290F0BD100A6B7F2 /* UI */,
 				2905D45B290F0B6E00A6B7F2 /* Main.storyboard */,
@@ -186,6 +197,7 @@
 				2905D48A290F0BD100A6B7F2 /* GameManagerViewModel.swift */,
 				290EA838290F3BF000F3A3B1 /* GameViewModel.swift */,
 				290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */,
+				2994C2D1291B1813001D0CFE /* SelectPlayerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -197,6 +209,9 @@
 				2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */,
 				290EA834290F1FEC00F3A3B1 /* GameTypeViewController.swift */,
 				290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */,
+				295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */,
+				295D92542919CED500BEB2EA /* PlayerViewController.swift */,
+				295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -234,6 +249,14 @@
 				2905D49D290F0C0A00A6B7F2 /* Storyboarded.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2994C2D5291B19A6001D0CFE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2994C2D3291B199B001D0CFE /* TableNotificationProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,17 +405,22 @@
 				2905D498290F0BD100A6B7F2 /* RealmManager.swift in Sources */,
 				290EA839290F3BF000F3A3B1 /* GameViewModel.swift in Sources */,
 				2905D456290F0B6E00A6B7F2 /* AppDelegate.swift in Sources */,
+				295D92552919CED500BEB2EA /* PlayerViewController.swift in Sources */,
 				2905D4A0290F0C0A00A6B7F2 /* Storyboarded.swift in Sources */,
+				2994C2D4291B199B001D0CFE /* TableNotificationProtocol.swift in Sources */,
 				2905D458290F0B6E00A6B7F2 /* SceneDelegate.swift in Sources */,
 				290EA837290F2D2B00F3A3B1 /* GameSetupViewController.swift in Sources */,
 				2905D497290F0BD100A6B7F2 /* GamesManagerViewController.swift in Sources */,
 				2905D49E290F0C0A00A6B7F2 /* Coordinator.swift in Sources */,
 				290EA83D290F50B500F3A3B1 /* GameSetupViewModel.swift in Sources */,
+				295D92532919C8E700BEB2EA /* SelectPlayerViewController.swift in Sources */,
 				2905D494290F0BD100A6B7F2 /* GameTableViewCell.swift in Sources */,
+				295D92572919D46100BEB2EA /* CreatePlayerViewController.swift in Sources */,
 				290EA835290F1FEC00F3A3B1 /* GameTypeViewController.swift in Sources */,
 				2905D496290F0BD100A6B7F2 /* GameViewController.swift in Sources */,
 				2905D49A290F0BD100A6B7F2 /* Player.swift in Sources */,
 				2905D495290F0BD100A6B7F2 /* GameManagerViewModel.swift in Sources */,
+				2994C2D2291B1813001D0CFE /* SelectPlayerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

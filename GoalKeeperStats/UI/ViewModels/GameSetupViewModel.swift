@@ -16,8 +16,13 @@ class GameSetupViewModel {
     private var notificationToken: NotificationToken!
     var gamesList: Results<Game>?
     weak var delegate: GameSetupDelegate?
+    var gameId: Int?
     
     init() {
+        observeGameListBD()
+    }
+    
+    private func observeGameListBD() {
         gamesList = RealmManager.shared().objects(type: Game.self)
         notificationToken = gamesList?.observe({ [weak self] change in
             switch change {
@@ -28,6 +33,7 @@ class GameSetupViewModel {
                 
                 if !insertions.isEmpty {
                     if let gameId = self?.gamesList?[insertions.first!].id {
+                        self?.gameId = gameId
                         self?.delegate?.navigateToGame(gameId: gameId)
                     }
                 }

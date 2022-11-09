@@ -21,11 +21,14 @@ class GameSetupViewController: UIViewController {
     @IBOutlet private weak var homeTeamTextField: UITextField!
     @IBOutlet private weak var visitingTeamLabel: UILabel!
     @IBOutlet private weak var visitingTeamTextField: UITextField!
+    @IBOutlet weak var addPlayerButton: UIButton!
+    @IBOutlet weak var playersStack: UIStackView!
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBOutlet private weak var startGameButton: UIButton!
     
     var gameType: GameType!
     var viewModel = GameSetupViewModel()
+    private var playersList = [Player]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,19 @@ class GameSetupViewController: UIViewController {
     
     private func setupButtons() {
         startGameButton.addTarget(self, action: #selector(startGameButtonAction), for: .touchUpInside)
+        addPlayerButton.addTarget(self, action: #selector(addPlayerButtonAction), for: .touchUpInside)
+    }
+    
+    @objc
+    func addPlayerButtonAction() {
+        navigateToSelectPlayer()
+    }
+    
+    func navigateToSelectPlayer() {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectPlayerViewController") as? SelectPlayerViewController {
+            vc.selectPlayerdelegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc
@@ -48,6 +64,7 @@ class GameSetupViewController: UIViewController {
         game.id = Int(Date().timeIntervalSince1970 * 1000)
         game.homeTeamName = homeTeamTextField.text!
         game.visitingTeamName = visitingTeamTextField.text!
+        game.players.append(objectsIn: playersList)
         RealmManager.shared().save(game)
     }
 }
@@ -58,5 +75,14 @@ extension GameSetupViewController: GameSetupDelegate {
             vc.gameId = gameId
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+}
+
+extension GameSetupViewController: SelectPlayerProtocol {
+    func selectedPlayer(player: Player) {
+        playersList.append(player)
+        let playerLabel = UILabel()
+        playerLabel.text = player.name
+        playersStack.addArrangedSubview(playerLabel)
     }
 }

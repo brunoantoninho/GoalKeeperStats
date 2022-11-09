@@ -61,7 +61,7 @@ extension GamesManagerViewController: UITableViewDataSource, UITableViewDelegate
     }
 }
 
-extension GamesManagerViewController: GameManagerViewModelDelegate {
+extension GamesManagerViewController: TableNotificationProtocol {
     func initial() {        
         tableGames.reloadData()
     }

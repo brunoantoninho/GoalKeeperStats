@@ -14,4 +14,5 @@ class Game: Object {
     @Persisted var visitingTeamName = ""
     @Persisted var visitingTeamScore = 0
     @Persisted var defendedScore = 0
+    @Persisted var players = List<Player>()
 }
