@@ -720,63 +720,81 @@
                                 </buttonConfiguration>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCg-qt-EHV">
-                                <rect key="frame" x="17" y="86.333333333333314" width="356" height="72.666666666666686"/>
+                                <rect key="frame" x="11" y="86.333333333333314" width="368" height="104"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JME-y3-4PW">
-                                        <rect key="frame" x="166" y="13.999999999999996" width="24" height="22.666666666666675"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visiting Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueC-cX-wIw">
-                                        <rect key="frame" x="220" y="14.333333333333345" width="116" height="21.666666666666671"/>
+                                        <rect key="frame" x="232" y="19.666666666666671" width="116" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Home Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQa-tz-omP">
-                                        <rect key="frame" x="20" y="14.333333333333345" width="116" height="21.666666666666671"/>
+                                        <rect key="frame" x="20" y="19.666666666666671" width="116" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehG-iv-lDZ">
-                                        <rect key="frame" x="72" y="41" width="12" height="21.666666666666671"/>
+                                        <rect key="frame" x="72" y="46.333333333333329" width="12" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wj4-8W-mlC">
-                                        <rect key="frame" x="272" y="41" width="12" height="21.666666666666671"/>
+                                        <rect key="frame" x="284" y="46.333333333333329" width="12" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcv-Wi-okT">
-                                        <rect key="frame" x="168.33333333333334" y="50.333333333333329" width="19.666666666666657" height="23"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="square.and.arrow.up" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
-                                        </state>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TTb-yY-ext">
+                                        <rect key="frame" x="136" y="0.0" width="96" height="104"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNk-2Y-gn5">
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JME-y3-4PW">
+                                                <rect key="frame" x="0.0" y="19.333333333333339" width="96" height="22.666666666666675"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOP-yD-dIt">
+                                                <rect key="frame" x="0.0" y="40.666666666666671" width="96" height="34.333333333333329"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="arrow.triangle.2.circlepath.circle" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcv-Wi-okT">
+                                                <rect key="frame" x="0.0" y="75.000000000000014" width="96" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="square.and.arrow.up" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="JME-y3-4PW" firstAttribute="centerY" secondItem="wQa-tz-omP" secondAttribute="centerY" id="1Cm-uV-2FN"/>
+                                    <constraint firstItem="JME-y3-4PW" firstAttribute="centerY" secondItem="ueC-cX-wIw" secondAttribute="centerY" id="1kr-P4-Ieu"/>
                                     <constraint firstItem="wQa-tz-omP" firstAttribute="leading" secondItem="MCg-qt-EHV" secondAttribute="leading" constant="20" symbolic="YES" id="1uN-Tk-Lsx"/>
-                                    <constraint firstItem="wQa-tz-omP" firstAttribute="centerY" secondItem="JME-y3-4PW" secondAttribute="centerY" id="20h-bp-xLz"/>
-                                    <constraint firstItem="JME-y3-4PW" firstAttribute="centerX" secondItem="MCg-qt-EHV" secondAttribute="centerX" id="60M-SF-p7i"/>
+                                    <constraint firstItem="ueC-cX-wIw" firstAttribute="leading" secondItem="TTb-yY-ext" secondAttribute="trailing" id="6Pz-Cg-exe"/>
                                     <constraint firstItem="wj4-8W-mlC" firstAttribute="centerY" secondItem="ehG-iv-lDZ" secondAttribute="centerY" id="Cjx-FL-8lX"/>
                                     <constraint firstItem="ehG-iv-lDZ" firstAttribute="centerX" secondItem="wQa-tz-omP" secondAttribute="centerX" id="DEv-qS-4VU"/>
                                     <constraint firstItem="ehG-iv-lDZ" firstAttribute="top" secondItem="wQa-tz-omP" secondAttribute="bottom" constant="5" id="I3J-rx-eI3"/>
-                                    <constraint firstItem="JME-y3-4PW" firstAttribute="top" secondItem="MCg-qt-EHV" secondAttribute="top" constant="15" id="VNF-H5-siC"/>
-                                    <constraint firstAttribute="bottom" secondItem="ehG-iv-lDZ" secondAttribute="bottom" constant="10" id="ZB5-pP-cL6"/>
-                                    <constraint firstItem="Gcv-Wi-okT" firstAttribute="centerX" secondItem="JME-y3-4PW" secondAttribute="centerX" id="bf7-Et-fgQ"/>
-                                    <constraint firstItem="Gcv-Wi-okT" firstAttribute="top" secondItem="JME-y3-4PW" secondAttribute="bottom" constant="15" id="f5T-6P-xQZ"/>
-                                    <constraint firstItem="JME-y3-4PW" firstAttribute="leading" secondItem="wQa-tz-omP" secondAttribute="trailing" constant="30" id="gIY-Qx-96O"/>
+                                    <constraint firstItem="TTb-yY-ext" firstAttribute="top" secondItem="MCg-qt-EHV" secondAttribute="top" id="LUb-RO-KwW"/>
+                                    <constraint firstAttribute="bottom" secondItem="TTb-yY-ext" secondAttribute="bottom" id="ckb-VD-89Y"/>
                                     <constraint firstItem="wj4-8W-mlC" firstAttribute="centerX" secondItem="ueC-cX-wIw" secondAttribute="centerX" id="gQG-qc-wa2"/>
                                     <constraint firstAttribute="trailing" secondItem="ueC-cX-wIw" secondAttribute="trailing" constant="20" symbolic="YES" id="gj1-vp-jSb"/>
-                                    <constraint firstItem="ueC-cX-wIw" firstAttribute="centerY" secondItem="JME-y3-4PW" secondAttribute="centerY" id="jPW-Qb-AhR"/>
-                                    <constraint firstItem="ueC-cX-wIw" firstAttribute="leading" secondItem="JME-y3-4PW" secondAttribute="trailing" constant="30" id="xbg-vo-wcz"/>
+                                    <constraint firstItem="TTb-yY-ext" firstAttribute="centerX" secondItem="MCg-qt-EHV" secondAttribute="centerX" id="hXu-QP-CNZ"/>
+                                    <constraint firstItem="TTb-yY-ext" firstAttribute="leading" secondItem="wQa-tz-omP" secondAttribute="trailing" id="lpH-Nk-N4o"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyc-Qg-n2L">
@@ -915,10 +933,12 @@
                         <outlet property="homeTeamLabel" destination="wQa-tz-omP" id="YRq-Gr-K4B"/>
                         <outlet property="homeTeamScoreLabel" destination="ehG-iv-lDZ" id="2eW-lC-zbh"/>
                         <outlet property="homeTeamUndoGoalButton" destination="nrX-gi-BeG" id="MPC-nG-vMv"/>
+                        <outlet property="playerName" destination="rNk-2Y-gn5" id="N6z-1A-5JU"/>
                         <outlet property="sendEmailButton" destination="Gcv-Wi-okT" id="Ulo-Ot-Vaf"/>
                         <outlet property="sufferdButton" destination="vNp-e5-A24" id="VP0-kS-lXK"/>
                         <outlet property="sufferdLabelScore" destination="5Hz-MS-yaJ" id="l0Y-Te-MKa"/>
                         <outlet property="sufferedLabel" destination="MIQ-ee-K08" id="Vri-Gt-3SH"/>
+                        <outlet property="switchPlayerButton" destination="DOP-yD-dIt" id="xin-md-3hK"/>
                         <outlet property="undoDefendedButton" destination="m3a-4d-bt8" id="WIM-9E-f5J"/>
                         <outlet property="undoSufferdButton" destination="qyc-Qg-n2L" id="6xC-7b-fhW"/>
                         <outlet property="visitingTeamLabel" destination="ueC-cX-wIw" id="RB0-nb-vMc"/>
@@ -950,6 +970,7 @@
     </scenes>
     <resources>
         <image name="aac_logo" width="1667" height="1667"/>
+        <image name="arrow.triangle.2.circlepath.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.uturn.left.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.uturn.right.circle" catalog="system" width="128" height="123"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>

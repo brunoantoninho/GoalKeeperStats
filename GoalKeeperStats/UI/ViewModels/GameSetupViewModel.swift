@@ -8,15 +8,15 @@
 import RealmSwift
 
 protocol GameSetupDelegate: AnyObject {
-    func navigateToGame(gameId: Int)
+    func navigateToGame(game: Game)
 }
 
 class GameSetupViewModel {
     
     private var notificationToken: NotificationToken!
     var gamesList: Results<Game>?
+    var playersList = [Player]()
     weak var delegate: GameSetupDelegate?
-    var gameId: Int?
     
     init() {
         observeGameListBD()
@@ -32,9 +32,8 @@ class GameSetupViewModel {
             case .update(_, deletions: _, insertions: let insertions, modifications: _):
                 
                 if !insertions.isEmpty {
-                    if let gameId = self?.gamesList?[insertions.first!].id {
-                        self?.gameId = gameId
-                        self?.delegate?.navigateToGame(gameId: gameId)
+                    if let game = self?.gamesList?[insertions.first!] {
+                        self?.delegate?.navigateToGame(game: game)
                     }
                 }
                 
@@ -46,5 +45,14 @@ class GameSetupViewModel {
     
     deinit {
         notificationToken.invalidate()
+    }
+    
+    func saveGame(id: Int, homeTeam: String, visitingTeam: String, players: [Player]) {
+        let game = Game()
+        game.id = id
+        game.homeTeamName = homeTeam
+        game.visitingTeamName = visitingTeam
+        game.players.append(objectsIn: players)
+        RealmManager.shared().save(game)
     }
 }

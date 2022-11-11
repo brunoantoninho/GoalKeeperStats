@@ -26,9 +26,13 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var homeTeamUndoGoalButton: UIButton!
     @IBOutlet private weak var sendEmailButton: UIButton!
     @IBOutlet private weak var gameOverButton: UIButton!
+    @IBOutlet weak var switchPlayerButton: UIButton!
+    @IBOutlet weak var playerName: UILabel!
     
     private var viewModel: GameViewModel!
-    var gameId: Int!
+    var game: Game!
+    var player: Player!
+    
     
     private var defendedScore = 0 {
         didSet {
@@ -54,7 +58,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = GameViewModel(gameId: gameId)
+        viewModel = GameViewModel(game: game)
         viewModel.delegate = self
         setupButtons()
         setupUI()
@@ -73,15 +77,14 @@ class GameViewController: UIViewController {
         homeTeamUndoGoalButton.addTarget(self, action: #selector(homeTeamUndoGoalButtonAction), for: .touchUpInside)
         sendEmailButton.addTarget(self, action: #selector(sendEmailButtonAction), for: .touchUpInside)
         gameOverButton.addTarget(self, action: #selector(gameOverButtonAction), for: .touchUpInside)
+        switchPlayerButton.addTarget(self, action: #selector(switchPlayerButtonAction), for: .touchUpInside)
     }
     
     private func setupUI() {
         UIApplication.shared.isIdleTimerDisabled = true
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        if let game = viewModel.game {
-            populateUI(game: game)
-        }
+        populateUI()
     }
     
     // MARK: Button Action
@@ -151,6 +154,14 @@ class GameViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    @objc
+    func switchPlayerButtonAction() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SelectPlayerViewController") as? SelectPlayerViewController {
+            vc.selectPlayerdelegate = self
+            self.present(vc, animated: true)
+        }
+    }
+    
     // MARK: Helpers
     
     private func saveGame() {
@@ -171,11 +182,19 @@ extension GameViewController: MFMailComposeViewControllerDelegate {
 }
 
 extension GameViewController: GameViewModelDelegate {
-    func populateUI(game: Game) {
+    func populateUI() {
         homeTeamLabel.text = game.homeTeamName
         homeTeamScoreLabel.text = String(game.homeTeamScore)
         visitingTeamLabel.text = game.visitingTeamName
         visitingTeamScoreLabel.text = String(game.visitingTeamScore)
-        defendedLabelScore .text = String(game.defendedScore)
+        defendedLabelScore.text = String(game.defendedScore)
+        playerName.text = player.name
+    }
+}
+
+extension GameViewController: SelectPlayerProtocol {
+    func selectedPlayer(player: Player) {
+        self.player = player
+        playerName.text = player.name
     }
 }

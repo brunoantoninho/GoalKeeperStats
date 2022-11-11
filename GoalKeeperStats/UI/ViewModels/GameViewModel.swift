@@ -9,12 +9,12 @@ import Foundation
 import RealmSwift
 
 protocol GameViewModelDelegate: AnyObject {
-    func populateUI(game: Game)
+    func populateUI()
 }
 
 class GameViewModel {
     
-    var game: Game!
+    var game: Game
     var notificationToken: NotificationToken!
     weak var delegate: GameViewModelDelegate?
     
@@ -22,16 +22,16 @@ class GameViewModel {
         notificationToken.invalidate()
     }
     
-    init(gameId: Int) {
-        game = RealmManager.shared().object(ofType: Game.self, forPrimaryKey: gameId)
-        delegate?.populateUI(game: game)
+    init(game: Game) {
+        self.game = game
+        delegate?.populateUI()
         notificationToken = game.observe { [weak self] change in
             guard let self = self else { return }
             switch change {
             case .change( _, _):
-                self.delegate?.populateUI(game: self.game)
+                self.delegate?.populateUI()
             case .deleted:
-                self.delegate?.populateUI(game: self.game)
+                self.delegate?.populateUI()
             case .error(let error):
                 log.error(error)
             }

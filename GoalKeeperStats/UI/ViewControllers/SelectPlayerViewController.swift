@@ -68,7 +68,11 @@ extension SelectPlayerViewController: UITableViewDataSource, UITableViewDelegate
         guard let playersList = viewModel.playersList else { return }
         let player = playersList[indexPath.row]
         selectPlayerdelegate?.selectedPlayer(player: player)
-        self.navigationController?.popViewController(animated: true)
+        if self.presentingViewController != nil {
+            self.dismiss(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

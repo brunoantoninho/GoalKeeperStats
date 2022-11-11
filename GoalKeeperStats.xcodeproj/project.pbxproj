@@ -205,13 +205,13 @@
 		2905D48B290F0BD100A6B7F2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2905D48C290F0BD100A6B7F2 /* GameViewController.swift */,
 				2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */,
 				290EA834290F1FEC00F3A3B1 /* GameTypeViewController.swift */,
 				290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */,
 				295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */,
-				295D92542919CED500BEB2EA /* PlayerViewController.swift */,
 				295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */,
+				2905D48C290F0BD100A6B7F2 /* GameViewController.swift */,
+				295D92542919CED500BEB2EA /* PlayerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -28,7 +28,6 @@ class GameSetupViewController: UIViewController {
     
     var gameType: GameType!
     var viewModel = GameSetupViewModel()
-    private var playersList = [Player]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,23 +55,18 @@ class GameSetupViewController: UIViewController {
     
     @objc
     func startGameButtonAction() {
-        saveGame()
-    }
-    
-    private func saveGame() {
-        let game = Game()
-        game.id = Int(Date().timeIntervalSince1970 * 1000)
-        game.homeTeamName = homeTeamTextField.text!
-        game.visitingTeamName = visitingTeamTextField.text!
-        game.players.append(objectsIn: playersList)
-        RealmManager.shared().save(game)
+        viewModel.saveGame(id: Int(Date().timeIntervalSince1970 * 1000),
+                           homeTeam: homeTeamTextField.text!,
+                           visitingTeam: visitingTeamTextField.text!,
+                           players: viewModel.playersList)
     }
 }
 
 extension GameSetupViewController: GameSetupDelegate {
-    func navigateToGame(gameId: Int) {
+    func navigateToGame(game: Game) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController {
-            vc.gameId = gameId
+            vc.game = game
+            vc.player = viewModel.playersList.first
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -80,7 +74,7 @@ extension GameSetupViewController: GameSetupDelegate {
 
 extension GameSetupViewController: SelectPlayerProtocol {
     func selectedPlayer(player: Player) {
-        playersList.append(player)
+        viewModel.playersList.append(player)
         let playerLabel = UILabel()
         playerLabel.text = player.name
         playersStack.addArrangedSubview(playerLabel)
