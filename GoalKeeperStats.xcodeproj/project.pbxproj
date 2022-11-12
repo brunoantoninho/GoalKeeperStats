@@ -32,6 +32,12 @@
 		290EA837290F2D2B00F3A3B1 /* GameSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */; };
 		290EA839290F3BF000F3A3B1 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA838290F3BF000F3A3B1 /* GameViewModel.swift */; };
 		290EA83D290F50B500F3A3B1 /* GameSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */; };
+		29391699291EAF1F00C5B61F /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29391698291EAF1F00C5B61F /* Team.swift */; };
+		2939169B291EAF7500C5B61F /* GamePlayerStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939169A291EAF7500C5B61F /* GamePlayerStats.swift */; };
+		2939169E291F068E00C5B61F /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939169D291F068E00C5B61F /* CreateTeamViewController.swift */; };
+		293916A0291F06B800C5B61F /* SelectTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939169F291F06B800C5B61F /* SelectTeamViewController.swift */; };
+		293916A3291F0DE700C5B61F /* SelectTeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293916A2291F0DE700C5B61F /* SelectTeamViewModel.swift */; };
+		293916A5291F43F100C5B61F /* CameraUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293916A4291F43F100C5B61F /* CameraUtils.swift */; };
 		295D92532919C8E700BEB2EA /* SelectPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */; };
 		295D92552919CED500BEB2EA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D92542919CED500BEB2EA /* PlayerViewController.swift */; };
 		295D92572919D46100BEB2EA /* CreatePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */; };
@@ -83,6 +89,12 @@
 		290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewController.swift; sourceTree = "<group>"; };
 		290EA838290F3BF000F3A3B1 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupViewModel.swift; sourceTree = "<group>"; };
+		29391698291EAF1F00C5B61F /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		2939169A291EAF7500C5B61F /* GamePlayerStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayerStats.swift; sourceTree = "<group>"; };
+		2939169D291F068E00C5B61F /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
+		2939169F291F06B800C5B61F /* SelectTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamViewController.swift; sourceTree = "<group>"; };
+		293916A2291F0DE700C5B61F /* SelectTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamViewModel.swift; sourceTree = "<group>"; };
+		293916A4291F43F100C5B61F /* CameraUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraUtils.swift; sourceTree = "<group>"; };
 		295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayerViewController.swift; sourceTree = "<group>"; };
 		295D92542919CED500BEB2EA /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +160,7 @@
 				2994C2D5291B19A6001D0CFE /* Protocols */,
 				2905D48E290F0BD100A6B7F2 /* Services */,
 				2905D486290F0BD100A6B7F2 /* UI */,
+				293916A6291F441300C5B61F /* Utils */,
 				2905D45B290F0B6E00A6B7F2 /* Main.storyboard */,
 				2905D45E290F0B6F00A6B7F2 /* Assets.xcassets */,
 				2905D460290F0B6F00A6B7F2 /* LaunchScreen.storyboard */,
@@ -198,6 +211,7 @@
 				290EA838290F3BF000F3A3B1 /* GameViewModel.swift */,
 				290EA83C290F50B500F3A3B1 /* GameSetupViewModel.swift */,
 				2994C2D1291B1813001D0CFE /* SelectPlayerViewModel.swift */,
+				293916A2291F0DE700C5B61F /* SelectTeamViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,10 +222,9 @@
 				2905D48D290F0BD100A6B7F2 /* GamesManagerViewController.swift */,
 				290EA834290F1FEC00F3A3B1 /* GameTypeViewController.swift */,
 				290EA836290F2D2B00F3A3B1 /* GameSetupViewController.swift */,
-				295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */,
-				295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */,
 				2905D48C290F0BD100A6B7F2 /* GameViewController.swift */,
-				295D92542919CED500BEB2EA /* PlayerViewController.swift */,
+				2939169C291F064400C5B61F /* Player */,
+				293916A1291F06C200C5B61F /* Team */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -237,6 +250,8 @@
 			children = (
 				2905D492290F0BD100A6B7F2 /* Game.swift */,
 				2905D493290F0BD100A6B7F2 /* Player.swift */,
+				29391698291EAF1F00C5B61F /* Team.swift */,
+				2939169A291EAF7500C5B61F /* GamePlayerStats.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -249,6 +264,33 @@
 				2905D49D290F0C0A00A6B7F2 /* Storyboarded.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		2939169C291F064400C5B61F /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				295D92522919C8E700BEB2EA /* SelectPlayerViewController.swift */,
+				295D92562919D46100BEB2EA /* CreatePlayerViewController.swift */,
+				295D92542919CED500BEB2EA /* PlayerViewController.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		293916A1291F06C200C5B61F /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				2939169D291F068E00C5B61F /* CreateTeamViewController.swift */,
+				2939169F291F06B800C5B61F /* SelectTeamViewController.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		293916A6291F441300C5B61F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				293916A4291F43F100C5B61F /* CameraUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		2994C2D5291B19A6001D0CFE /* Protocols */ = {
@@ -402,22 +444,28 @@
 			files = (
 				2905D49F290F0C0A00A6B7F2 /* MainCoordinator.swift in Sources */,
 				2905D499290F0BD100A6B7F2 /* Game.swift in Sources */,
+				293916A5291F43F100C5B61F /* CameraUtils.swift in Sources */,
 				2905D498290F0BD100A6B7F2 /* RealmManager.swift in Sources */,
 				290EA839290F3BF000F3A3B1 /* GameViewModel.swift in Sources */,
 				2905D456290F0B6E00A6B7F2 /* AppDelegate.swift in Sources */,
 				295D92552919CED500BEB2EA /* PlayerViewController.swift in Sources */,
 				2905D4A0290F0C0A00A6B7F2 /* Storyboarded.swift in Sources */,
 				2994C2D4291B199B001D0CFE /* TableNotificationProtocol.swift in Sources */,
+				29391699291EAF1F00C5B61F /* Team.swift in Sources */,
 				2905D458290F0B6E00A6B7F2 /* SceneDelegate.swift in Sources */,
 				290EA837290F2D2B00F3A3B1 /* GameSetupViewController.swift in Sources */,
+				2939169E291F068E00C5B61F /* CreateTeamViewController.swift in Sources */,
 				2905D497290F0BD100A6B7F2 /* GamesManagerViewController.swift in Sources */,
 				2905D49E290F0C0A00A6B7F2 /* Coordinator.swift in Sources */,
+				293916A3291F0DE700C5B61F /* SelectTeamViewModel.swift in Sources */,
 				290EA83D290F50B500F3A3B1 /* GameSetupViewModel.swift in Sources */,
+				293916A0291F06B800C5B61F /* SelectTeamViewController.swift in Sources */,
 				295D92532919C8E700BEB2EA /* SelectPlayerViewController.swift in Sources */,
 				2905D494290F0BD100A6B7F2 /* GameTableViewCell.swift in Sources */,
 				295D92572919D46100BEB2EA /* CreatePlayerViewController.swift in Sources */,
 				290EA835290F1FEC00F3A3B1 /* GameTypeViewController.swift in Sources */,
 				2905D496290F0BD100A6B7F2 /* GameViewController.swift in Sources */,
+				2939169B291EAF7500C5B61F /* GamePlayerStats.swift in Sources */,
 				2905D49A290F0BD100A6B7F2 /* Player.swift in Sources */,
 				2905D495290F0BD100A6B7F2 /* GameManagerViewModel.swift in Sources */,
 				2994C2D2291B1813001D0CFE /* SelectPlayerViewModel.swift in Sources */,
@@ -776,8 +824,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 10.27.0;
 			};
 		};
 		2905D4A8290F0CC900A6B7F2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {

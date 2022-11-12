@@ -14,7 +14,10 @@ class Player: Object {
     @Persisted var age = 0
     @Persisted var section = ""
     @Persisted var photo: Data?
-    @Persisted var gamePlayed = List<String>()
+    @Persisted var gamesPlayedList = List<Game>()
+    
+    var gamesPlayed: [Game] { Array(gamesPlayedList) }
+
     
 //    init(name: String, age: Int = 0, section: String = "", photo: Data? = nil, gamePlayed: List<String> = List<String>()) {
 //        super.init()

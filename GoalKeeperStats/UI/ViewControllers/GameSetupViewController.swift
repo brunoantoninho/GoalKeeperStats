@@ -17,10 +17,8 @@ enum GameType {
 
 class GameSetupViewController: UIViewController {
     
-    @IBOutlet private weak var homeTeamLabel: UILabel!
-    @IBOutlet private weak var homeTeamTextField: UITextField!
-    @IBOutlet private weak var visitingTeamLabel: UILabel!
-    @IBOutlet private weak var visitingTeamTextField: UITextField!
+    @IBOutlet weak var homeTeamButton: UIButton!
+    @IBOutlet weak var visitingTeamButton: UIButton!
     @IBOutlet weak var addPlayerButton: UIButton!
     @IBOutlet weak var playersStack: UIStackView!
     @IBOutlet private weak var datePicker: UIDatePicker!
@@ -32,51 +30,121 @@ class GameSetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Novo Jogo"
         setupButtons()
-        viewModel.delegate = self
+        viewModel.gameSetupDelegate = self
     }
     
     private func setupButtons() {
         startGameButton.addTarget(self, action: #selector(startGameButtonAction), for: .touchUpInside)
         addPlayerButton.addTarget(self, action: #selector(addPlayerButtonAction), for: .touchUpInside)
+        homeTeamButton.addTarget(self, action: #selector(homeTeamButtonAction), for: .touchUpInside)
+        visitingTeamButton.addTarget(self, action: #selector(visitingTeamButtonAction), for: .touchUpInside)
     }
     
     @objc
-    func addPlayerButtonAction() {
+    private func addPlayerButtonAction() {
         navigateToSelectPlayer()
     }
     
-    func navigateToSelectPlayer() {
+    private func navigateToSelectPlayer() {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectPlayerViewController") as? SelectPlayerViewController {
-            vc.selectPlayerdelegate = self
+            vc.selectPlayerDelegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @objc
-    func startGameButtonAction() {
-        viewModel.saveGame(id: Int(Date().timeIntervalSince1970 * 1000),
-                           homeTeam: homeTeamTextField.text!,
-                           visitingTeam: visitingTeamTextField.text!,
-                           players: viewModel.playersList)
+    private func startGameButtonAction() {
+        if let homeTeam = viewModel.homeTeam,
+           let visitorTeam = viewModel.visitorTeam {
+            viewModel.saveGame(id: Int(Date().timeIntervalSince1970 * 1000),
+                               homeTeam: homeTeam,
+                               visitingTeam: visitorTeam,
+                               date: datePicker.date,
+                               players: viewModel.playersList)
+        }
+    }
+    
+    @objc
+    private func homeTeamButtonAction() {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectTeamViewController") as? SelectTeamViewController {
+            vc.teamType = .home
+            vc.selectTeamDelegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @objc
+    private func visitingTeamButtonAction() {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectTeamViewController") as? SelectTeamViewController {
+            vc.teamType = .visiting
+            vc.selectTeamDelegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
 extension GameSetupViewController: GameSetupDelegate {
+    
     func navigateToGame(game: Game) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController {
-            vc.game = game
-            vc.player = viewModel.playersList.first
+            
+            vc.viewModel.game = game
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func setHomeTeam(team: Team?) {
+        if let team {
+            homeTeamButton.setTitle(team.name, for: .normal)
+        } else {
+            homeTeamButton.setTitle("Home Team", for: .normal)
+        }
+    }
+    
+    func setVisitingTeam(team: Team?) {
+        if let team {
+            visitingTeamButton.setTitle(team.name, for: .normal)
+        } else {
+            visitingTeamButton.setTitle("Home Team", for: .normal)
         }
     }
 }
 
 extension GameSetupViewController: SelectPlayerProtocol {
+    func deletedPlayer(player: Player) {
+        if let removeIndex = viewModel.playersList.firstIndex(of: player) {
+            viewModel.playersList.remove(at: removeIndex)
+        }
+    }
+    
     func selectedPlayer(player: Player) {
         viewModel.playersList.append(player)
         let playerLabel = UILabel()
         playerLabel.text = player.name
         playersStack.addArrangedSubview(playerLabel)
+    }
+}
+
+extension GameSetupViewController: SelectTeamProtocol {
+    
+    func selectedTeam(team: Team, teamType: TeamType) {
+        switch teamType {
+        case .home:
+            viewModel.homeTeam = team
+            homeTeamButton.setTitle(team.name, for: .normal)
+        case .visiting:
+            viewModel.visitorTeam = team
+            visitingTeamButton.setTitle(team.name, for: .normal)
+        }
+    }
+    
+    func deleteTeam(team: Team) {
+        if viewModel.homeTeam == team {
+            viewModel.homeTeam = nil
+        } else if viewModel.visitorTeam == team {
+            viewModel.visitorTeam = nil
+        }
     }
 }

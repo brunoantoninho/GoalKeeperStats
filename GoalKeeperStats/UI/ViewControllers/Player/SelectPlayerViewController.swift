@@ -9,34 +9,32 @@ import UIKit
 
 protocol SelectPlayerProtocol: AnyObject {
     func selectedPlayer(player: Player)
+    func deletedPlayer(player: Player)
 }
 
 class SelectPlayerViewController: UIViewController {
     
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var selectPlayerButton: UIButton!
-    @IBOutlet weak var createPlayerButton: UIButton!
     
     private let viewModel = SelectPlayerViewModel()
-    weak var selectPlayerdelegate: SelectPlayerProtocol?
+    weak var selectPlayerDelegate: SelectPlayerProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupButtons()
+        title = "Jogadores"
+        setupDelegates()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createPlayerButtonAction))
+    }
+    
+    private func setupDelegates() {
         table.delegate = self
         table.dataSource = self
         viewModel.delegate = self
-    }
-    
-    private func setupButtons() {
-        createPlayerButton.addTarget(self, action: #selector(createPlayerButtonAction), for: .touchUpInside)
-        selectPlayerButton.addTarget(self, action: #selector(selectPlayerButtonAction), for: .touchUpInside)
-    }
-    
-    @objc
-    private func selectPlayerButtonAction() {
-        
     }
     
     @objc
@@ -65,14 +63,26 @@ extension SelectPlayerViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let playersList = viewModel.playersList else { return }
-        let player = playersList[indexPath.row]
-        selectPlayerdelegate?.selectedPlayer(player: player)
+        if let player = viewModel.playersList?[indexPath.row] {
+            selectPlayerDelegate?.selectedPlayer(player: player)
+        }
         if self.presentingViewController != nil {
             self.dismiss(animated: true)
         } else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Apagar") { [unowned self] contextualAction, view, completionHandler in
+            if let player = viewModel.playersList?[indexPath.row] {
+                RealmManager().delete(player)
+                completionHandler(true)
+            }
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
 

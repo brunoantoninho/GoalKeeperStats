@@ -14,18 +14,18 @@ protocol GameViewModelDelegate: AnyObject {
 
 class GameViewModel {
     
-    var game: Game
-    var notificationToken: NotificationToken!
+    var game: Game?
+    var currentPlayerStats: GamePlayerStats?
+    var notificationToken: NotificationToken?
     weak var delegate: GameViewModelDelegate?
     
     deinit {
-        notificationToken.invalidate()
+        notificationToken?.invalidate()
     }
     
-    init(game: Game) {
-        self.game = game
+    init() {
         delegate?.populateUI()
-        notificationToken = game.observe { [weak self] change in
+        notificationToken = game?.observe { [weak self] change in
             guard let self = self else { return }
             switch change {
             case .change( _, _):
@@ -38,21 +38,27 @@ class GameViewModel {
         }
     }
     
-    func saveDefendedScore(defendedScore: Int) {
+    func saveDefendedScore(score: Int) {
         RealmManager.shared().safeWrite { [weak self] in
-            self?.game.defendedScore = defendedScore
+            self?.currentPlayerStats?.defendedScore = score
         }
     }
     
-    func saveVisitingTeamScore(visitingTeamScore: Int) {
+    func saveMissedScore(score: Int) {
         RealmManager.shared().safeWrite { [weak self] in
-            self?.game.visitingTeamScore = visitingTeamScore
+            self?.currentPlayerStats?.missedScore = score
         }
     }
     
-    func saveHomeTeamScore(homeTeamScore: Int) {
+    func saveVisitingTeamScore(score: Int) {
         RealmManager.shared().safeWrite { [weak self] in
-            self?.game.homeTeamScore = homeTeamScore
+            self?.game?.visitingTeamScore = score
+        }
+    }
+    
+    func saveHomeTeamScore(score: Int) {
+        RealmManager.shared().safeWrite { [weak self] in
+            self?.game?.homeTeamScore = score
         }
     }
 }

@@ -5,8 +5,8 @@
 //  Created by Bruno Antoninho on 28/10/2022.
 //
 
-import UIKit
 import MessageUI
+import UIKit
 
 class GameViewController: UIViewController {
     
@@ -29,36 +29,40 @@ class GameViewController: UIViewController {
     @IBOutlet weak var switchPlayerButton: UIButton!
     @IBOutlet weak var playerName: UILabel!
     
-    private var viewModel: GameViewModel!
-    var game: Game!
-    var player: Player!
-    
+    let viewModel = GameViewModel()
     
     private var defendedScore = 0 {
         didSet {
             defendedLabelScore.text = "\(defendedScore)"
-            viewModel.saveDefendedScore(defendedScore: defendedScore)
+            viewModel.saveDefendedScore(score: defendedScore)
         }
     }
+    
+    private var missedScore = 0 {
+        didSet {
+            viewModel.saveMissedScore(score: missedScore)
+        }
+    }
+    
     private var visitingTeamScore = 0 {
         didSet {
             sufferdLabelScore.text = "\(visitingTeamScore)"
             visitingTeamScoreLabel.text = "\(visitingTeamScore)"
-            viewModel.saveVisitingTeamScore(visitingTeamScore: visitingTeamScore)
+            viewModel.saveVisitingTeamScore(score: visitingTeamScore)
         }
     }
     
     private var homeTeamScore = 0 {
         didSet {
             homeTeamScoreLabel.text = "\(homeTeamScore)"
-            viewModel.saveHomeTeamScore(homeTeamScore: homeTeamScore)
+            viewModel.saveHomeTeamScore(score: homeTeamScore)
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = GameViewModel(game: game)
+        viewModel.currentPlayerStats = viewModel.game?.playerStats.first!
         viewModel.delegate = self
         setupButtons()
         setupUI()
@@ -97,6 +101,7 @@ class GameViewController: UIViewController {
     @objc
     func sufferdButtonAction() {
         visitingTeamScore += 1
+        missedScore += 1
     }
     
     @objc
@@ -108,8 +113,9 @@ class GameViewController: UIViewController {
     
     @objc
     func undoSufferdButtonAction() {
-        if visitingTeamScore > 0 {
+        if visitingTeamScore > 0 && missedScore > 0 {
             visitingTeamScore -= 1
+            missedScore -= 1
         }
     }
     
@@ -132,15 +138,25 @@ class GameViewController: UIViewController {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setSubject("Dados do jogo")
-
+            
+            guard let game = viewModel.game else { return }
+            var playerStatusString = ""
+            for playerStatus in game.playerStatsList {
+                if let playerName = RealmManager().object(ofType: Player.self, forPrimaryKey: playerStatus.playerId)?.name {
+                    playerStatusString += "Nome Jogador: \(playerName)\n"
+                }
+                
+                playerStatusString += "Número de defesas: " + String(playerStatus.defendedScore) + "\n"
+                playerStatusString += "Golos sofridos: " + String(playerStatus.missedScore) + "\n\n"
+            }
             let emailBody =
 """
             Resultado final:
-            \(viewModel.game.homeTeamName) X \(viewModel.game.visitingTeamName)
-            \(viewModel.game.homeTeamScore) - \(viewModel.game.visitingTeamScore)
-            
-            Número de defesas: \(viewModel.game.defendedScore)
-            Golos sofridos: \(viewModel.game.visitingTeamScore)
+            \(game.homeTeam.name) X \(game.visitingTeam.name)
+            \(game.homeTeamScore) - \(game.visitingTeamScore)
+
+            ---------- Dados Jogadores ----------
+            \(playerStatusString)
 """
             mail.setMessageBody(emailBody, isHTML: false)
             present(mail, animated: true)
@@ -157,44 +173,58 @@ class GameViewController: UIViewController {
     @objc
     func switchPlayerButtonAction() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SelectPlayerViewController") as? SelectPlayerViewController {
-            vc.selectPlayerdelegate = self
+            vc.selectPlayerDelegate = self
             self.present(vc, animated: true)
         }
     }
     
     // MARK: Helpers
     
-    private func saveGame() {
-        let currentGame = Game()
-        currentGame.id = Int(Date().timeIntervalSince1970 * 1000)
-        currentGame.defendedScore = defendedScore
-        currentGame.homeTeamScore = homeTeamScore
-        currentGame.visitingTeamScore = visitingTeamScore
-        RealmManager.shared().save(currentGame)
+}
+
+extension GameViewController: GameViewModelDelegate {
+    func populateUI() {
+        homeTeamLabel.text = viewModel.game?.homeTeam.name
+        visitingTeamLabel.text = viewModel.game?.visitingTeam.name
+        if let game = viewModel.game {
+            homeTeamScoreLabel.text = String(game.homeTeamScore)
+            visitingTeamScoreLabel.text = String(game.visitingTeamScore)
+        }
+        
+        guard let currentPlayerStats = viewModel.currentPlayerStats else { return }
+        defendedLabelScore.text = String(currentPlayerStats.defendedScore)
+        
+        if let name = RealmManager().object(ofType: Player.self, forPrimaryKey: currentPlayerStats.playerId)?.name {
+            playerName.text = name
+        }
+    }
+}
+
+extension GameViewController: SelectPlayerProtocol {
+    
+    func selectedPlayer(player: Player) {
+        
+        viewModel.currentPlayerStats = viewModel.game?.playerStats.first(where: { gamePlayerStats in
+            gamePlayerStats.playerId == player.id
+        })!
+        
+        if let currentPlayerStats = viewModel.currentPlayerStats {
+            defendedScore = currentPlayerStats.defendedScore
+        }
+        playerName.text = player.name
     }
     
+    func deletedPlayer(player: Player) {
+        if let removeIndex = viewModel.game?.playerStatsList.firstIndex(where: { gamePlayerStats in
+            gamePlayerStats.playerId == player.id
+        }) {
+            viewModel.game?.playerStatsList.remove(at: removeIndex)
+        }
+    }
 }
 
 extension GameViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
-    }
-}
-
-extension GameViewController: GameViewModelDelegate {
-    func populateUI() {
-        homeTeamLabel.text = game.homeTeamName
-        homeTeamScoreLabel.text = String(game.homeTeamScore)
-        visitingTeamLabel.text = game.visitingTeamName
-        visitingTeamScoreLabel.text = String(game.visitingTeamScore)
-        defendedLabelScore.text = String(game.defendedScore)
-        playerName.text = player.name
-    }
-}
-
-extension GameViewController: SelectPlayerProtocol {
-    func selectedPlayer(player: Player) {
-        self.player = player
-        playerName.text = player.name
     }
 }

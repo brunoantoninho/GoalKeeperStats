@@ -53,11 +53,23 @@ extension GamesManagerViewController: UITableViewDataSource, UITableViewDelegate
         guard let gamesList = viewModel.gamesList else { return cell }
         let game = gamesList[indexPath.row]
         
-        cell.HomeTeamLabel.text = game.homeTeamName
+        cell.HomeTeamLabel.text = game.homeTeam.name
         cell.HomeTeamScoreLabel.text = String(game.homeTeamScore)
-        cell.visitingTeamLabel.text = game.visitingTeamName
+        cell.visitingTeamLabel.text = game.visitingTeam.name
         cell.visitingTeamScoreLabel.text = String(game.visitingTeamScore)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Apagar") { [unowned self] contextualAction, view, completionHandler in
+            if let game = viewModel.gamesList?[indexPath.row] {
+                RealmManager().delete(game)
+                completionHandler(true)
+            }
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
 
